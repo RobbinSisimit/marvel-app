@@ -4,7 +4,7 @@ import { reqCharacter } from "../service/characters"
 
 
 
-export const useCharacters = () => {
+export const useCharacters = (page) => {
     const [characters, setCharacter] = useState()
 
   
@@ -12,13 +12,13 @@ export const useCharacters = () => {
   
   useEffect(() => {
     
-    reqCharacter().then((data) => {
+    reqCharacter(((page-1)*20)).then((data) => {
         setCharacter(data.results)
     })
     
   
     
-  }, [])
+  }, [page])
 
 
   return {

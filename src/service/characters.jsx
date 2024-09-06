@@ -7,8 +7,8 @@ const time_stamp = new Date().getTime()
   const hash = CryptoJS.MD5(time_stamp + private_api_key + public_api_key).toString()
 
 
-  export const reqCharacter = async () => {
-    const resp = await fetch (`https://gateway.marvel.com:443/v1/public/characters?ts=${time_stamp}&apikey=${public_api_key}&hash=${hash}`)
+  export const reqCharacter = async (page) => {
+    const resp = await fetch (`https://gateway.marvel.com:443/v1/public/characters?ts=${time_stamp}&apikey=${public_api_key}&hash=${hash}&offset=${page}`)
     const {data} = await resp.json()
     
     return data
